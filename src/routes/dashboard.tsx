@@ -248,9 +248,9 @@ function Dashboard() {
 					<CardContent className="p-0 overflow-hidden">
 						<Table aria-label="Recent Activities Table" className="w-full">
 							<Table.ScrollContainer className="w-full">
-								<Table.Content>
+								<Table.Content aria-label="Recent Activities Table">
 									<Table.Header>
-										<Table.Column className="bg-transparent border-b border-default-100/30 text-default-400 text-xxs font-bold uppercase py-3 px-5 text-left">
+										<Table.Column isRowHeader className="bg-transparent border-b border-default-100/30 text-default-400 text-xxs font-bold uppercase py-3 px-5 text-left">
 											Event
 										</Table.Column>
 										<Table.Column className="bg-transparent border-b border-default-100/30 text-default-400 text-xxs font-bold uppercase py-3 px-5 text-left">
@@ -326,7 +326,7 @@ function Dashboard() {
 									<span>API Rate Limits</span>
 									<span className="text-default-400">42% (420 req/s)</span>
 								</div>
-								<ProgressBar value={42} className="w-full">
+								<ProgressBar value={42} className="w-full" aria-label="API Rate Limits">
 									<ProgressBar.Track className="w-full h-1.5 bg-default-100 dark:bg-default-50/55 rounded-full overflow-hidden">
 										<ProgressBar.Fill className="h-full bg-primary transition-all duration-300" style={{ width: "42%" }} />
 									</ProgressBar.Track>
@@ -338,7 +338,7 @@ function Dashboard() {
 									<span>Token Encryption Load</span>
 									<span className="text-default-400">18% utilization</span>
 								</div>
-								<ProgressBar value={18} className="w-full">
+								<ProgressBar value={18} className="w-full" aria-label="Token Encryption Load">
 									<ProgressBar.Track className="w-full h-1.5 bg-default-100 dark:bg-default-50/55 rounded-full overflow-hidden">
 										<ProgressBar.Fill className="h-full bg-success transition-all duration-300" style={{ width: "18%" }} />
 									</ProgressBar.Track>
@@ -350,7 +350,7 @@ function Dashboard() {
 									<span>Database Query Pools</span>
 									<span className="text-default-400">82% capacity</span>
 								</div>
-								<ProgressBar value={82} className="w-full">
+								<ProgressBar value={82} className="w-full" aria-label="Database Query Pools">
 									<ProgressBar.Track className="w-full h-1.5 bg-default-100 dark:bg-default-50/55 rounded-full overflow-hidden">
 										<ProgressBar.Fill className="h-full bg-warning transition-all duration-300" style={{ width: "82%" }} />
 									</ProgressBar.Track>

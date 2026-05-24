@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sidebar } from "./sidebar";
 import { UserButton } from "@better-auth-ui/heroui";
 
@@ -31,6 +31,11 @@ export function AppLayout({ children }: AppLayoutProps) {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	// State for sidebar drawer (mobile)
 	const [isMobileOpen, setIsMobileOpen] = useState(false);
+	// Hydration mounting check
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	// Generate breadcrumbs based on route
 	const getBreadcrumbs = () => {
@@ -178,7 +183,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 									onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 									aria-label="Toggle light and dark themes"
 								>
-									{theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+									{mounted && theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
 								</Button>
 							</Tooltip.Trigger>
 							<Tooltip.Content className="bg-content1 border border-default-100 px-2 py-1 rounded-md text-xs shadow-md">
@@ -187,7 +192,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 						</Tooltip>
 
 						{/* User Quick Profile Icon */}
-						 <UserButton size="icon" />
+						 <UserButton size="icon" aria-label="User menu" />
 					</div>
 				</header>
 

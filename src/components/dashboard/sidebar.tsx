@@ -205,7 +205,6 @@ export function Sidebar({ isCollapsed, setIsCollapsed, className = "" }: Sidebar
 											location.pathname === item.to ||
 											(item.params &&
 												location.pathname.includes(item.params.path));
-
 										const linkElement = (
 											<Link
 												to={item.to}
@@ -215,6 +214,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed, className = "" }: Sidebar
 														? "bg-primary text-primary-foreground shadow-md shadow-primary-500/10"
 														: "text-default-500 hover:text-foreground hover:bg-default-50/70"
 												}`}
+												aria-label={item.label}
 											>
 												<Icon
 													className={`size-4 shrink-0 transition-transform group-hover:scale-105 duration-200 ${
@@ -257,7 +257,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed, className = "" }: Sidebar
 			</ScrollShadow>
 
 			<div className={`p-3 border-t border-default-100/50 bg-default-50/10 flex transition-all duration-300 ${isCollapsed ? "justify-center" : "justify-start"}`}>
-				<UserButton size={isCollapsed ? "icon" : undefined} />
+				<UserButton size={isCollapsed ? "icon" : undefined} aria-label="User menu" />
 			</div>
 		</aside>
 	);

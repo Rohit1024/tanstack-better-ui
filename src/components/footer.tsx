@@ -11,6 +11,7 @@ export function Footer() {
 					<Link
 						href="/"
 						className="flex items-center gap-2 text-foreground no-underline hover:opacity-80 transition-opacity"
+						aria-label="Tanstack Better-Auth Home"
 					>
 						<Logo className="size-4" />
 						<span className="font-bold tracking-tight text-sm text-foreground">
@@ -29,6 +30,7 @@ export function Footer() {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="flex items-center gap-1.5 text-default-500 hover:text-foreground no-underline"
+						aria-label="GitHub Repository"
 					>
 						<Github className="size-3.5" />
 						<span>GitHub</span>
@@ -38,6 +40,7 @@ export function Footer() {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="flex items-center gap-1 text-default-500 hover:text-foreground no-underline"
+						aria-label="Better Auth Documentation"
 					>
 						<span>Docs</span>
 						<ExternalLink className="size-3" />
@@ -45,18 +48,21 @@ export function Footer() {
 					<Link
 						href="/settings/account"
 						className="text-default-500 hover:text-foreground no-underline"
+						aria-label="Account Settings"
 					>
 						Account
 					</Link>
 					<Link
 						href="#"
 						className="text-default-500 hover:text-foreground no-underline"
+						aria-label="Privacy Policy"
 					>
 						Privacy
 					</Link>
 					<Link
 						href="#"
 						className="text-default-500 hover:text-foreground no-underline"
+						aria-label="Terms of Service"
 					>
 						Terms
 					</Link>

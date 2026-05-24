@@ -12,6 +12,7 @@ import {
 	Smartphone,
 	Terminal,
 } from "lucide-react";
+import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
 
 export const Route = createFileRoute("/")({ component: App });
@@ -19,6 +20,11 @@ export const Route = createFileRoute("/")({ component: App });
 function App() {
 	const { data: sessionState, isPending } = authClient.useSession();
 	const user = sessionState?.user;
+
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	return (
 		<div className="relative overflow-hidden grow pb-20">
@@ -32,6 +38,7 @@ function App() {
 					variant="soft"
 					color="accent"
 					className="mb-6 border border-accent-100/30 px-3 py-1 font-semibold text-xs animate-pulse"
+					aria-label="Platform version status info"
 				>
 					<span className="flex items-center gap-1.5">
 						<Shield className="size-3" />
@@ -53,8 +60,8 @@ function App() {
 				</p>
 
 				<div className="mt-10 flex flex-wrap justify-center gap-4">
-					{isPending ? (
-						<Button size="lg" variant="ghost">
+					{!mounted || isPending ? (
+						<Button size="lg" variant="ghost" aria-label="Loading Session">
 							Loading Session...
 						</Button>
 					) : user ? (
@@ -68,6 +75,7 @@ function App() {
 									variant="primary"
 									size="lg"
 									className="font-medium shadow-lg shadow-primary-500/20 flex items-center gap-2"
+									aria-label="Go to Dashboard"
 								>
 									<span>Go to Dashboard</span>
 									<ArrowRight className="size-4" />
@@ -85,6 +93,7 @@ function App() {
 									variant="primary"
 									size="lg"
 									className="font-medium shadow-lg shadow-primary-500/20 transition-transform duration-300 hover:scale-105 flex items-center gap-2"
+									aria-label="Get Started"
 								>
 									<span>Get Started</span>
 									<ArrowRight className="size-4" />
@@ -99,6 +108,7 @@ function App() {
 									variant="outline"
 									size="lg"
 									className="font-medium border-default-200 hover:bg-default-50 transition-colors duration-300"
+									aria-label="Sign In"
 								>
 									Sign In
 								</Button>
@@ -140,7 +150,7 @@ function App() {
 								<div className="p-4 rounded-xl border border-default-100/60 bg-content2/30 flex items-center justify-between gap-3">
 									{user ? (
 										<div className="flex items-center gap-3">
-											<Avatar className="bg-primary text-white size-10">
+											<Avatar className="bg-primary text-white size-10" aria-label="User profile avatar">
 												{user.image ? (
 													<Avatar.Image src={user.image} alt={user.name || "Avatar"} />
 												) : (
@@ -158,7 +168,7 @@ function App() {
 										</div>
 									) : (
 										<div className="flex items-center gap-3">
-											<Avatar className="bg-default-200 text-default-500 size-10">
+											<Avatar className="bg-default-200 text-default-500 size-10" aria-label="Anonymous Developer Avatar">
 												<Avatar.Fallback>AD</Avatar.Fallback>
 											</Avatar>
 											<div className="flex flex-col">
@@ -176,6 +186,7 @@ function App() {
 										color={user ? "success" : "default"}
 										variant="soft"
 										className="font-semibold text-xs"
+										aria-label="Active status"
 									>
 										{user ? "Active" : "Guest"}
 									</Chip>
@@ -207,6 +218,7 @@ function App() {
 											color="success"
 											variant="soft"
 											className="text-xxs font-medium"
+											aria-label="Current session indicator"
 										>
 											Current
 										</Chip>
