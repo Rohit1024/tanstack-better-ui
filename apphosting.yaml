@@ -1,0 +1,22 @@
+env:
+  - variable: DATABASE_URL
+    secret: better-auth-neon-db
+
+  - variable: GITHUB_CLIENT_ID
+    secret: github-client-id
+
+  - variable: GITHUB_CLIENT_SECRET
+    secret: github-client-secret
+
+  - variable: BETTER_AUTH_SECRET
+    secret: better-auth-secret
+
+  - variable: BETTER_AUTH_URL
+    value: https://tanstack-better-ui--sidekick-1024.us-central1.hosted.app/
+    availability:
+      - BUILD
+      - RUNTIME
+    
+    
+
+  
