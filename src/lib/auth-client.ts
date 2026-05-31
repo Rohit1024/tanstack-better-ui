@@ -4,6 +4,7 @@ import {
 	inferAdditionalFields,
 	multiSessionClient,
 	usernameClient,
+	anonymousClient
 } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 
@@ -16,5 +17,6 @@ export const authClient = createAuthClient({
 		apiKeyClient(),
 		passkeyClient(),
 		usernameClient(),
+		anonymousClient()
 	],
 });

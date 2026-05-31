@@ -31,7 +31,7 @@ export const Route = createFileRoute("/dashboard")({
 	async beforeLoad({ context, location }: { context: any; location: any }) {
 		const ensureSession = createIsomorphicFn()
 			.server(() =>
-				ensureSessionServer(context.queryClient, auth, { headers: getRequestHeaders() })
+				ensureSessionServer(context.queryClient, auth as any, { headers: getRequestHeaders() })
 			)
 			.client(() => ensureSessionClient(context.queryClient, authClient));
 
