@@ -16,10 +16,11 @@ const config = defineConfig({
 	},
 	ssr: {
 		noExternal: ["@gravity-ui/icons", "@better-auth-ui/heroui"],
+		external: ["kysely", "@better-auth/kysely-adapter"],
 	},
 	plugins: [
 		devtools(),
-		nitro({ rollupConfig: { external: [/^@sentry\//] } }),
+		nitro({ rollupConfig: { external: [/^@sentry\//, "kysely", "@better-auth/kysely-adapter"] } }),
 		tailwindcss(),
 		tanstackStart(),
 		viteReact(),
